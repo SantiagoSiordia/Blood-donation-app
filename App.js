@@ -1,33 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import { blood } from './colors';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { Login } from './components/Login'
 
-export default function App() {
-
-  const image = require('./assets/landing.jpg');
-
+const App = () => {
   return (
-    <ImageBackground source={image} style={styles.container} resizeMode='cover'>
-      <Text style={styles.welcome}>¡Bienvenido!</Text>
-      <Text style={styles.description}>Creé está app para que puedas ser o encontrar donador de sangre más facilmente</Text>
-    </ImageBackground>
+    <Login />
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  welcome: {
-    fontSize: 40,
-    color: 'white'
-  },
-  description: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20
-  }
-});
+export default () => (
+  <>
+    <IconRegistry icons={EvaIconsPack} />
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <App />
+    </ApplicationProvider>
+  </>
+);
